@@ -6,7 +6,6 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-
 import java.util.List;
 
 import androidx.recyclerview.widget.RecyclerView;
@@ -25,10 +24,8 @@ public class MsgAdapter extends RecyclerView.Adapter<MsgAdapter.ViewHolder> {
 
         public ViewHolder(View view){
             super(view);
-
             leftLayout = view.findViewById(R.id.left_layout);
             rightLayout = view.findViewById(R.id.right_layout);
-
             leftMsg = view.findViewById(R.id.left_msg);
             rightMsg = view.findViewById(R.id.right_msg);
         }
@@ -41,21 +38,22 @@ public class MsgAdapter extends RecyclerView.Adapter<MsgAdapter.ViewHolder> {
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType){
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.msg_item, parent, false);
-        return new ViewHolder(view);
+        ViewHolder holder = new ViewHolder(view);
+        return holder;
     }
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position){
         Msg msg = mMsgList.get(position);
-        if(msg.getType() == Msg.TYPE_RECEIVED){
+        if(msg.getType() == Msg.TYPE_SEND){
+            holder.rightLayout.setVisibility(View.VISIBLE);
+            holder.leftLayout.setVisibility(View.GONE);
+            holder.rightMsg.setText(msg.getContent());
+        }
+        else{
             holder.leftLayout.setVisibility(View.VISIBLE);
             holder.rightLayout.setVisibility(View.GONE);
             holder.leftMsg.setText(msg.getContent());
-        }
-        else if(msg.getType() == Msg.TYPE_SEND){
-            holder.leftLayout.setVisibility(View.GONE);
-            holder.rightLayout.setVisibility(View.VISIBLE);
-            holder.rightMsg.setText(msg.getContent());
         }
     }
 

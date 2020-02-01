@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.net.LinkAddress;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -18,9 +17,9 @@ public class MainActivity extends AppCompatActivity {
 
     private List<Msg> msgList = new ArrayList<>();
 
-    private EditText inputText;
+    private Button send;
 
-    private Button sendButton;
+    private EditText inputText;
 
     private RecyclerView msgRecyclerView;
 
@@ -32,33 +31,34 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         initMsgs();
         inputText = findViewById(R.id.input_text);
-        sendButton = findViewById(R.id.send_button);
+        send = findViewById(R.id.send_btn);
         msgRecyclerView = findViewById(R.id.msg_recycler_view);
-        LinearLayoutManager manager = new LinearLayoutManager(this);
-        msgRecyclerView.setLayoutManager(manager);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        msgRecyclerView.setLayoutManager(layoutManager);
         msgAdapter = new MsgAdapter(msgList);
         msgRecyclerView.setAdapter(msgAdapter);
-        sendButton.setOnClickListener(new View.OnClickListener(){
+        send.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
                 String content = inputText.getText().toString();
                 if(!content.equals("")){
-                    Msg msg = new Msg(content, Msg.TYPE_SEND);
+                    Msg msg = new Msg(Msg.TYPE_SEND, content);
                     msgList.add(msg);
-                    msgAdapter.notifyItemInserted(msgList.size() - 1); //当有新消息时刷新ListView中的显示
+                    msgAdapter.notifyItemInserted(msgList.size() - 1);
                     msgRecyclerView.scrollToPosition(msgList.size() - 1);
                     inputText.setText("");
                 }
             }
         });
+
     }
 
     private void initMsgs(){
-        Msg msg1 = new Msg("Hello", Msg.TYPE_RECEIVED);
+        Msg msg1 = new Msg(Msg.TYPE_RECEIVED, "Hello guy!");
         msgList.add(msg1);
-        Msg msg2 = new Msg("Hello, who's that?", Msg.TYPE_SEND);
+        Msg msg2 = new Msg(Msg.TYPE_SEND, "Hello, who's that?");
         msgList.add(msg2);
-        Msg msg3 = new Msg("This is lhx, nice to meet you.", Msg.TYPE_RECEIVED);
+        Msg msg3 = new Msg(Msg.TYPE_RECEIVED, "This is Tom, nice to meet you.");
         msgList.add(msg3);
     }
 }
