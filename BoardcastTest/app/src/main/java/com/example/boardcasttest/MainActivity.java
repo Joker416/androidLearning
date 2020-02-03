@@ -71,4 +71,11 @@ public class MainActivity extends AppCompatActivity {
 //            abortBroadcast();
         }
     }
+
+    class LocalReceiver extends BroadcastReceiver{
+        @Override
+        public void onReceive(Context context, Intent intent){
+            Toast.makeText(context, "received by localReceiver", Toast.LENGTH_SHORT).show();
+        }
+    }
 }
