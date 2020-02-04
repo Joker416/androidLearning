@@ -61,9 +61,36 @@
 
     </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/checkbox_linear"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/password_linear"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <CheckBox
+            android:layout_marginLeft="10dp"
+            android:id="@+id/remember_pass"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+
+        <TextView
+            android:layout_marginLeft="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Remember Password"
+            android:textSize="18sp"
+            />
+
+
+
+    </LinearLayout>
+
     <Button
         android:id="@+id/login_button"
-        app:layout_constraintTop_toBottomOf="@+id/password_linear"
+        app:layout_constraintTop_toBottomOf="@id/checkbox_linear"
         android:layout_marginTop="30dp"
         android:layout_width="match_parent"
         android:layout_height="60dp"
