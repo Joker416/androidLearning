@@ -1,6 +1,8 @@
 package com.example.litepaltest;
 
-public class Book {
+import org.litepal.crud.LitePalSupport;
+
+public class Book extends LitePalSupport {
 
     private int id;
 
@@ -11,6 +13,8 @@ public class Book {
     private int pages;
 
     private String name;
+
+    private String press;
 
     public void setId(int id){
         this.id = id;
@@ -50,5 +54,13 @@ public class Book {
 
     public String getName(){
         return name;
+    }
+
+    public void setPress(String press){
+        this.press = press;
+    }
+
+    public String getPress(){
+        return press;
     }
 }
