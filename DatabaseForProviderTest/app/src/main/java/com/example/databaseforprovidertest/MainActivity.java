@@ -60,6 +60,27 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        Button update_category = findViewById(R.id.update_category);
+        update_category.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Category category = new Category();
+                category.setName("Technology");
+                category.setCategoryCode(1000);
+                category.save();
+                category.setName("Math");
+                category.setCategoryCode(1005);
+                category.save();
+                category.setName("Art");
+                category.setCategoryCode(1202);
+                category.save();
+                Category category1 = new Category();
+                category1.setName("Math");
+                category1.setCategoryCode(1005);
+                category1.save();
+            }
+        });
+
 
 
     }
