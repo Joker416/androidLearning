@@ -7,6 +7,16 @@
     tools:context=".loginActivity"
     android:background="@drawable/login_background">
 
+    <com.clz.view.customtoolbar.CustomToolBar
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:bgColor="@color/transparent"
+        app:isFitStatusBar="false"
+        app:leftIcon="@color/transparent"/>
+
 
     <EditText
         android:id="@+id/logNameEditText"

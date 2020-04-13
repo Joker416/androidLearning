@@ -4,6 +4,119 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".registerActivity">
+    tools:context=".registerActivity"
+    android:background="@drawable/login_background">
+
+    <EditText
+        android:id="@+id/codeText"
+        android:layout_width="222dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="43dp"
+        android:layout_marginTop="10dp"
+        android:ems="10"
+        android:hint="@string/inputCode"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/checkPwdText"
+        android:importantForAutofill="no" />
+
+    <EditText
+        android:id="@+id/checkPwdText"
+        android:layout_width="325dp"
+        android:layout_height="51dp"
+        android:layout_marginStart="43dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="43dp"
+        android:ems="10"
+        android:hint="@string/checkPws"
+        android:importantForAutofill="no"
+        android:inputType="textPassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pwdText" />
+
+    <EditText
+        android:id="@+id/pwdText"
+        android:layout_width="325dp"
+        android:layout_height="51dp"
+        android:layout_marginStart="43dp"
+        android:layout_marginTop="10dp"
+        android:ems="10"
+        android:hint="@string/inputPwd"
+        android:importantForAutofill="no"
+        android:inputType="textPassword"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/userNameText" />
+
+    <com.clz.view.customtoolbar.CustomToolBar
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:bgColor="@color/transparent"
+        app:isFitStatusBar="false" />
+
+    <ImageView
+        android:id="@+id/iconView"
+        android:layout_width="117dp"
+        android:layout_height="106dp"
+        android:layout_marginStart="72dp"
+        android:layout_marginTop="51dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        app:srcCompat="@mipmap/ic_launcher"
+        android:contentDescription="@string/picContent" />
+
+    <Button
+        android:id="@+id/iconButton"
+        android:layout_width="105dp"
+        android:layout_height="37dp"
+        android:layout_marginStart="9dp"
+        android:layout_marginTop="110dp"
+        android:background="@drawable/btn_shape"
+        android:text="@string/iconBtn"
+        android:textColor="@android:color/background_light"
+        app:layout_constraintStart_toEndOf="@+id/iconView"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+
+    <EditText
+        android:id="@+id/userNameText"
+        android:layout_width="325dp"
+        android:layout_height="51dp"
+        android:layout_marginStart="43dp"
+        android:layout_marginTop="36dp"
+        android:ems="10"
+        android:hint="@string/inputUsername"
+        android:importantForAutofill="no"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iconButton" />
+
+    <Button
+        android:id="@+id/registerButton"
+        android:layout_width="184dp"
+        android:layout_height="47dp"
+        android:layout_marginStart="113dp"
+        android:layout_marginTop="32dp"
+        android:text="@string/registerBtn"
+        android:background="@drawable/btn_shape"
+        android:textColor="@android:color/background_light"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/codeText" />
+
+    <ImageView
+        android:id="@+id/capthaView"
+        android:layout_width="96dp"
+        android:layout_height="43dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="43dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/codeText"
+        app:layout_constraintTop_toBottomOf="@+id/checkPwdText"
+        app:srcCompat="@mipmap/ic_launcher"
+        android:contentDescription="@string/refreshCode" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

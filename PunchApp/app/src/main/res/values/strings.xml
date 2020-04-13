@@ -8,4 +8,12 @@
     <string name="student">学生</string>
     <string name="haveNoAccount">新用户？</string>
     <string name="register">点击注册</string>
+    <string name="picContent">选择头像</string>
+    <string name="iconBtn">请选择头像</string>
+    <string name="inputUsername">请输入用户名</string>
+    <string name="inputPwd">请输入密码</string>
+    <string name="checkPws">请确认密码</string>
+    <string name="inputCode">请输入右侧图片中的验证码</string>
+    <string name="registerBtn">注册</string>
+    <string name="refreshCode">点击刷新</string>
 </resources>
