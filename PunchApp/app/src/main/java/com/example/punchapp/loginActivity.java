@@ -2,11 +2,14 @@ package com.example.punchapp;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
+import android.widget.Button;
+import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,9 +35,35 @@ public class loginActivity extends AppCompatActivity {
         });
 
         CustomToolBar toolBar = findViewById(R.id.toolbar);
-//        toolBar.setTitle("Study Happily");
-        toolBar.setRightText("Hello");
-        toolBar.hideRight();
+        toolBar.setTitle("Study");
+//        toolBar.setRightText("Hello");
+//        toolBar.hideRight();
+
+
+        //处理登录按钮事件
+        Button loginButton = findViewById(R.id.loginButton);
+        final RadioButton teacherBtn = findViewById(R.id.teacherBtn);
+        final RadioButton studentBtn = findViewById(R.id.studentBtn);
+        loginButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(teacherBtn.isChecked()){
+                    Toast.makeText(loginActivity.this, "teacher", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(loginActivity.this, teacherActivity.class);
+                    startActivity(intent);
+                }
+                else if(studentBtn.isChecked()){
+                    Toast.makeText(loginActivity.this, "student", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(loginActivity.this, studentActivity.class);
+                    startActivity(intent);
+                }
+                else{
+                    Toast.makeText(loginActivity.this, "please check in your identity", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+
 
     }
 }

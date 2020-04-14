@@ -9,14 +9,22 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".iconChoiceActivity"></activity>
-        <activity android:name=".registerActivity" />
-        <activity android:name=".loginActivity">
+        <activity
+            android:name=".NavigationDrawerActivity"
+            android:label="@string/title_activity_test_drawer"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".teacherActivity" />
+        <activity android:name=".studentActivity" />
+        <activity android:name=".iconChoiceActivity" />
+        <activity android:name=".registerActivity" />
+        <activity android:name=".loginActivity">
+
         </activity>
     </application>
 

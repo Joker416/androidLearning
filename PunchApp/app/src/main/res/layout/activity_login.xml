@@ -61,23 +61,25 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:orientation="horizontal">
+
         <RadioButton
-            android:shadowColor="@android:color/holo_blue_dark"
+            android:id="@+id/teacherBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="8dp"
             android:layout_marginEnd="80dp"
-            android:text="@string/teacher"
-            android:textSize="18sp"
-            />
-        <RadioButton
+            android:padding="8dp"
             android:shadowColor="@android:color/holo_blue_dark"
+            android:text="@string/teacher"
+            android:textSize="18sp" />
+
+        <RadioButton
+            android:id="@+id/studentBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="8dp"
+            android:shadowColor="@android:color/holo_blue_dark"
             android:text="@string/student"
-            android:textSize="18sp"
-            />
+            android:textSize="18sp" />
 
     </RadioGroup>
 
