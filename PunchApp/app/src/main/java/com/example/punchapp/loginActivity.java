@@ -28,7 +28,7 @@ public class loginActivity extends AppCompatActivity {
         TextView registerText = findViewById(R.id.registerTextView);
         registerText.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
-                Toast.makeText(loginActivity.this, "Registered", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(loginActivity.this, "Registered", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(loginActivity.this, registerActivity.class);
                 startActivity(intent);
             }
@@ -48,7 +48,7 @@ public class loginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(teacherBtn.isChecked()){
-                    Toast.makeText(loginActivity.this, "teacher", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(loginActivity.this, "teacherActivity", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(loginActivity.this, teacherActivity.class);
                     startActivity(intent);
                 }
@@ -58,7 +58,7 @@ public class loginActivity extends AppCompatActivity {
                     startActivity(intent);
                 }
                 else{
-                    Toast.makeText(loginActivity.this, "please check in your identity", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(loginActivity.this, "请选择您的身份", Toast.LENGTH_SHORT).show();
                 }
             }
         });

@@ -30,4 +30,11 @@
     <string name="menu_tools">Tools</string>
     <string name="menu_share">Share</string>
     <string name="menu_send">Send</string>
+    <string name="title_activity_student">studentActivity</string>
+    <string name="title_activity_teacher">teacher</string>
+    <string name="others">其他</string>
+    <string name="menu_settings">设置</string>
+    <string name="menu_myclass">我的班级</string>
+    <string name="menu_punch">我的打卡</string>
+    <string name="menu_myrecord">我的记录</string>
 </resources>

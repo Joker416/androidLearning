@@ -1,20 +1,24 @@
 package com.example.punchapp;
 
 import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.drawable.RoundedBitmapDrawable;
 import androidx.core.graphics.drawable.RoundedBitmapDrawableFactory;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.media.Image;
 import android.os.Bundle;
+import android.text.InputType;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RadioButton;
 import android.widget.Toast;
 
 import com.clz.view.customtoolbar.CustomToolBar;
@@ -40,7 +44,7 @@ public class registerActivity extends AppCompatActivity {
         toolBar.setTitle("注册");
         toolBar.setLeftOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
-                Toast.makeText(registerActivity.this,"Return", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(registerActivity.this,"Return", Toast.LENGTH_SHORT).show();
                 finish();
             }
         });
@@ -64,30 +68,40 @@ public class registerActivity extends AppCompatActivity {
 //        image3.setImageDrawable(circleDrawable);
 
         //注册按钮相关
-        Button registerButton = findViewById(R.id.registerButton);
+        final Button registerButton = findViewById(R.id.registerButton);
         registerButton.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
                 EditText captchaText = findViewById(R.id.codeText);
                 EditText pwdText = findViewById(R.id.pwdText);
                 EditText pwdCheckText = findViewById(R.id.checkPwdText);
+                RadioButton teacher = findViewById(R.id.teacherRegBtn);
+                RadioButton student = findViewById(R.id.studentRegBtn);
                 inputCode = captchaText.getText().toString().toLowerCase();
                 String inputPwd = pwdText.getText().toString();
                 String pwdCheck = pwdCheckText.getText().toString();
-                if(inputCode.equals(realCode) && inputPwd.equals(pwdCheck)) {
-                    Toast.makeText(registerActivity.this, "register succeed", Toast.LENGTH_SHORT).show();
-                    finish();
+                String trueCode = realCode.toLowerCase();
+                if(inputCode.equals(trueCode) && inputPwd.equals(pwdCheck)) {
+                    if(!teacher.isChecked() && !student.isChecked()){
+                        Toast.makeText(registerActivity.this, "请选择您的身份", Toast.LENGTH_SHORT).show();
+                    }
+                    else if(teacher.isChecked() && !student.isChecked()){
+                        codeDialogCreate();
+                    }
+                    else{
+                        Toast.makeText(registerActivity.this, "学生注册成功", Toast.LENGTH_SHORT).show();
+                        finish();
+
+                    }
+//                    Toast.makeText(registerActivity.this, "register succeed", Toast.LENGTH_SHORT).show();
                 }
                 else{
 //                    Log.d(TAG, "fuck realCode = " + realCode);
 //                    Log.d(TAG, "fuck inputCode = " + inputCode);
                     if(!inputPwd.equals(pwdCheck))
-                        Toast.makeText(registerActivity.this, "two different pwd", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(registerActivity.this, "两次密码不一致", Toast.LENGTH_SHORT).show();
                     if(!inputCode.equals(realCode))
-                        Toast.makeText(registerActivity.this, "wrong captcha", Toast.LENGTH_SHORT).show();
-                    ImageView captchaView = findViewById(R.id.capthaView);
-                    captchaView.setImageBitmap(Captcha.getInstance().createBitmap());
-                    realCode = Captcha.getInstance().getCode();
-                    captchaText.setText("");
+                        Toast.makeText(registerActivity.this, "验证码输入错误", Toast.LENGTH_SHORT).show();
+                    recreateCaptcha();
                     pwdText.setText("");
                     pwdCheckText.setText("");
                 }
@@ -95,15 +109,7 @@ public class registerActivity extends AppCompatActivity {
         });
 
         //验证码生成
-        final ImageView captchaView = findViewById(R.id.capthaView);
-        captchaView.setImageBitmap(Captcha.getInstance().createBitmap());
-        realCode = Captcha.getInstance().getCode().toLowerCase();
-        captchaView.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v){
-                captchaView.setImageBitmap(Captcha.getInstance().createBitmap());
-                realCode = Captcha.getInstance().getCode();
-            }
-        });
+        createCaptcha();
 
     }
 
@@ -130,4 +136,53 @@ public class registerActivity extends AppCompatActivity {
         ImageView image3 = findViewById(R.id.iconView);
         image3.setImageDrawable(circleDrawable);
     }
+
+    public void codeDialogCreate(){
+        final EditText et = new EditText(this);
+        et.setInputType(InputType.TYPE_TEXT_VARIATION_PASSWORD);
+
+        new AlertDialog.Builder(this).setTitle("请输入教师专用码")
+                .setIcon(android.R.drawable.ic_dialog_email)
+                .setView(et)
+                .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        String input = et.getText().toString();
+                        if (input.equals("")) {
+                            Toast.makeText(getApplicationContext(), "请输入教师专用码" + input, Toast.LENGTH_LONG).show();
+                            recreateCaptcha();
+                        }
+                        else if(input.equals("123456")){
+                            Toast.makeText(registerActivity.this, "教师注册成功", Toast.LENGTH_SHORT).show();
+                            finish();
+                        }
+                        else{
+                            Toast.makeText(registerActivity.this, "专用码错误", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                })
+                .setNegativeButton("取消", null)
+                .show();
+    }
+
+
+    //验证码生成
+    public void createCaptcha(){
+        final ImageView captchaView = findViewById(R.id.capthaView);
+        captchaView.setImageBitmap(Captcha.getInstance().createBitmap());
+        realCode = Captcha.getInstance().getCode().toLowerCase();
+        captchaView.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                captchaView.setImageBitmap(Captcha.getInstance().createBitmap());
+                realCode = Captcha.getInstance().getCode();
+            }
+        });
+    }
+
+    //重置验证码
+    public void recreateCaptcha(){
+        createCaptcha();
+        EditText captchaInput = findViewById(R.id.codeText);
+        captchaInput.setText("");
+    }
+
 }

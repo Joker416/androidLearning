@@ -7,46 +7,116 @@
     tools:context=".registerActivity"
     android:background="@drawable/login_background">
 
+    <RadioGroup
+        android:id="@+id/register_identity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/iconView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:padding="8dp"
+        android:orientation="horizontal">
+        <RadioButton
+            android:id="@+id/teacherRegBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="80dp"
+            android:padding="8dp"
+            android:shadowColor="@android:color/holo_blue_dark"
+            android:text="@string/teacher"
+            android:textSize="18sp" />
+
+        <RadioButton
+            android:id="@+id/studentRegBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:shadowColor="@android:color/holo_blue_dark"
+            android:text="@string/student"
+            android:textSize="18sp" />
+
+    </RadioGroup>
+
+    <EditText
+        android:id="@+id/userNameText"
+        android:layout_width="325dp"
+        android:layout_height="51dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="64dp"
+        android:ems="10"
+        android:hint="@string/inputUsername"
+        android:importantForAutofill="no"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iconButton" />
+
+    <ImageView
+        android:id="@+id/capthaView"
+        android:layout_width="96dp"
+        android:layout_height="43dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="43dp"
+        android:contentDescription="@string/refreshCode"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/codeText"
+        app:layout_constraintTop_toBottomOf="@+id/checkPwdText"
+        app:srcCompat="@mipmap/ic_launcher" />
+
     <EditText
         android:id="@+id/codeText"
         android:layout_width="222dp"
         android:layout_height="50dp"
-        android:layout_marginStart="43dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="28dp"
         android:ems="10"
         android:hint="@string/inputCode"
+        android:importantForAutofill="no"
         android:inputType="textPersonName"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkPwdText"
-        android:importantForAutofill="no" />
+        app:layout_constraintTop_toBottomOf="@+id/checkPwdText" />
 
-    <EditText
-        android:id="@+id/checkPwdText"
-        android:layout_width="325dp"
-        android:layout_height="51dp"
-        android:layout_marginStart="43dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="43dp"
-        android:ems="10"
-        android:hint="@string/checkPws"
-        android:importantForAutofill="no"
-        android:inputType="textPassword"
-        app:layout_constraintEnd_toEndOf="parent"
+    <Button
+        android:id="@+id/registerButton"
+        android:layout_width="184dp"
+        android:layout_height="47dp"
+        android:layout_marginStart="112dp"
+        android:layout_marginTop="56dp"
+        android:background="@drawable/btn_shape"
+        android:text="@string/registerBtn"
+        android:textColor="@android:color/background_light"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pwdText" />
+        app:layout_constraintTop_toBottomOf="@+id/codeText" />
 
     <EditText
         android:id="@+id/pwdText"
         android:layout_width="325dp"
         android:layout_height="51dp"
-        android:layout_marginStart="43dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="16dp"
         android:ems="10"
         android:hint="@string/inputPwd"
         android:importantForAutofill="no"
         android:inputType="textPassword"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/userNameText" />
+
+    <EditText
+        android:id="@+id/checkPwdText"
+        android:layout_width="325dp"
+        android:layout_height="51dp"
+        android:layout_marginStart="43dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="43dp"
+        android:ems="10"
+        android:hint="@string/checkPws"
+        android:importantForAutofill="no"
+        android:inputType="textPassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pwdText" />
 
     <com.clz.view.customtoolbar.CustomToolBar
         app:layout_constraintTop_toTopOf="parent"
@@ -79,44 +149,6 @@
         android:textColor="@android:color/background_light"
         app:layout_constraintStart_toEndOf="@+id/iconView"
         app:layout_constraintTop_toBottomOf="@+id/toolbar" />
-
-    <EditText
-        android:id="@+id/userNameText"
-        android:layout_width="325dp"
-        android:layout_height="51dp"
-        android:layout_marginStart="43dp"
-        android:layout_marginTop="36dp"
-        android:ems="10"
-        android:hint="@string/inputUsername"
-        android:importantForAutofill="no"
-        android:inputType="textPersonName"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iconButton" />
-
-    <Button
-        android:id="@+id/registerButton"
-        android:layout_width="184dp"
-        android:layout_height="47dp"
-        android:layout_marginStart="113dp"
-        android:layout_marginTop="32dp"
-        android:text="@string/registerBtn"
-        android:background="@drawable/btn_shape"
-        android:textColor="@android:color/background_light"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/codeText" />
-
-    <ImageView
-        android:id="@+id/capthaView"
-        android:layout_width="96dp"
-        android:layout_height="43dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="43dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/codeText"
-        app:layout_constraintTop_toBottomOf="@+id/checkPwdText"
-        app:srcCompat="@mipmap/ic_launcher"
-        android:contentDescription="@string/refreshCode" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
